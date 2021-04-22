@@ -62,7 +62,7 @@ public class Researcher {
 	 } 
 	
 	
-	public String readItems()
+	public String readreseacher()
 	 {
 	 String output = "";
 	 try
@@ -121,7 +121,7 @@ public class Researcher {
 	 } 
 	
 	
-	public String updateItem(String ridd,String fname, String lname, String phone, String bdate, String email, String inoctgry, String country, String edustate, String password, String cpasswored)
+	public String updatereseacher(String ridd,String fname, String lname, String phone, String bdate, String email, String inoctgry, String country, String edustate, String password, String cpasswored)
 	
 	 {
 	 String output = "";
@@ -167,7 +167,7 @@ public class Researcher {
 	
 	
 	
-	public String deleteItem(String rid)
+	public String deletereseacher(String rid)
 	 {
 	 String output = "";
 	 try
