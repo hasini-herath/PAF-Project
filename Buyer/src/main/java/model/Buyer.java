@@ -26,7 +26,7 @@ public class Buyer {
 		
 		
 		
-		public String insertItem(String ftname, String ltname, String bphone, String birthdate, String email, String country, String pass, String compass)
+		public String insertBuyer(String ftname, String ltname, String bphone, String birthdate, String email, String country, String pass, String compass)
 		 {
 		 String output = "";
 		 try
@@ -65,7 +65,7 @@ public class Buyer {
 		
 
 		
-		public String readItems()
+		public String readBuyer()
 		 {
 		 String output = "";
 		 try
@@ -74,10 +74,10 @@ public class Buyer {
 		 if (con == null)
 		 {return "Error while connecting to the database for reading."; }
 		 // Prepare the html table to be displayed
-		 output = "<table border='1'><tr><th>Buyer ID</th><th>first Name</th><th>Last Name</th>" +
-		 "<th>bphone </th>" +
-		 "<th>birthdate </th>" +
-		 "<th>email</th><th>country</th><th>pass</th><th>compass</th></tr>";
+		 output = "<table border='1'><tr><th>Buyer ID</th><th>First Name</th><th>Last Name</th>" +
+		 "<th>Phone No </th>" +
+		 "<th>Birth Date </th>" +
+		 "<th>E-mail</th><th>Country</th><th>Password</th><th>Confirm Password</th></tr>";
 
 		 String query = "select * from bdetails";
 		 Statement stmt = con.createStatement();
@@ -106,11 +106,7 @@ public class Buyer {
 		 output += "<td>" + password + "</td>";
 		 output += "<td>" + cpassword + "</td>";
 		 // buttons
-		 output += "<td><input name='btnUpdate' type='button' value='Update'class='btn btn-secondary'></td>"
-				 + "<td><form method='post' action='buyers.jsp'>"
-				 + "<input name='btnRemove' type='submit' value='Remove'class='btn btn-danger'>"
-				 + "<input name='bid' type='hidden' value='" + bid
-				 + "'>" + "</form></td></tr>";
+		
 		 }
 		 con.close();
 		 // Complete the html table
@@ -132,7 +128,7 @@ public class Buyer {
 		
 		
 		
-		public String updateItem(String bid,String ftname, String ltname, String bphone, String birthdate, String email, String country, String pass, String compass)
+		public String updateBuyer(String bid,String ftname, String ltname, String bphone, String birthdate, String email, String country, String pass, String compass)
 		
 		 {
 		 String output = "";
@@ -169,7 +165,7 @@ public class Buyer {
 		 } 
 		
 		
-		public String deleteItem(String bid)
+		public String deleteBuyer(String bid)
 		 {
 		 String output = "";
 		 try

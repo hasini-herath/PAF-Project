@@ -30,7 +30,7 @@ public class Feedback {
 			
 			
 			
-			public String insertItem(String pcode, String description)
+			public String insertfd(String pcode, String description)
 			 {
 			 String output = "";
 			 try
@@ -64,7 +64,7 @@ public class Feedback {
 			
 
 			
-			public String readItems()
+			public String readfd()
 			 {
 			 String output = "";
 			 try
@@ -92,11 +92,7 @@ public class Feedback {
 			 output += "<td>" + description + "</td>";
 		
 			 // buttons
-			 output += "<td><input name='btnUpdate' type='button' value='Update'class='btn btn-secondary'></td>"
-					 + "<td><form method='post' action='buyers.jsp'>"
-					 + "<input name='btnRemove' type='submit' value='Remove'class='btn btn-danger'>"
-					 + "<input name='fbid' type='hidden' value='" + fbid
-					 + "'>" + "</form></td></tr>";
+		
 			 }
 			 con.close();
 			 // Complete the html table

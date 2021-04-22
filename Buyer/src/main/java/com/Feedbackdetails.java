@@ -20,9 +20,9 @@ public class Feedbackdetails
 		@GET
 		@Path("/")
 		@Produces(MediaType.TEXT_HTML)
-		public String readItems()
+		public String readfd()
 		{
-			return itemObj.readItems();
+			return itemObj.readfd();
 		}
 		
 		
@@ -31,12 +31,12 @@ public class Feedbackdetails
 			@Path("/")
 			@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 			@Produces(MediaType.TEXT_PLAIN)
-			public String insertItem(@FormParam("pcode") String pcode,
+			public String insertfd(@FormParam("pcode") String pcode,
 			 @FormParam("description") String description)
 			
 
 			{
-			 String output = itemObj.insertItem(pcode, description);
+			 String output = itemObj.insertfd(pcode, description);
 			return output;
 			}
 }
