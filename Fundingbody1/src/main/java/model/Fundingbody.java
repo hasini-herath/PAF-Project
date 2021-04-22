@@ -63,7 +63,7 @@ public class Fundingbody {
 	
 	
 	
-	public String readItems()
+	public String readfd()
 	 {
 	 String output = "";
 	 try
@@ -96,10 +96,7 @@ public class Fundingbody {
 	 output += "<td>" + frequirements + "</td>";
 
 	 // buttons
-	 output += "<td><input name='btnUpdate' type='button' value='Update'class='btn btn-secondary'></td>"
-	 + "<td><form method='post' action='items.jsp'>"+ "<input name='btnRemove' type='submit' value='Remove'class='btn btn-danger'>"
-	 + "<input name='fid' type='hidden' value='" + fid
-	 + "'>" + "</form></td></tr>";
+	
 	 }
 	 con.close();
 	 // Complete the html table
@@ -116,7 +113,7 @@ public class Fundingbody {
 	
 	
 	
-	public String updateItem(String ffid,String fname, String fcountry, String fyears, String fcategory, String frequirements)
+	public String updatefd(String ffid,String fname, String fcountry, String fyears, String fcategory, String frequirements)
 	
 	 {
 	 String output = "";
@@ -154,7 +151,7 @@ public class Fundingbody {
 	
 	
 	
-	public String deleteItem(String fid)
+	public String deletefd(String fid)
 	 {
 	 String output = "";
 	 try

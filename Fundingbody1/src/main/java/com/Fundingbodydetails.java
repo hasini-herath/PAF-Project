@@ -17,9 +17,9 @@ public class Fundingbodydetails
 @GET
 @Path("/")
 @Produces(MediaType.TEXT_HTML)
-public String readItems()
+public String readfd()
 {
-	return itemObj.readItems();
+	return itemObj.readfd();
 }
 
 @POST
@@ -43,10 +43,10 @@ return output;
 @Path("/")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.TEXT_PLAIN)
-public String updateItem(String itemData)
+public String updatefd(String fdData)
 {
 //Convert the input string to a JSON object
- JsonObject itemObject = new JsonParser().parse(itemData).getAsJsonObject();
+ JsonObject itemObject = new JsonParser().parse(fdData).getAsJsonObject();
 //Read the values from the JSON object
  String fid = itemObject.get("fid").getAsString();
  String fname = itemObject.get("fname").getAsString();
@@ -55,7 +55,7 @@ public String updateItem(String itemData)
  String fcategory = itemObject.get("fcategory").getAsString();
  String frequirements = itemObject.get("frequirements").getAsString();
 
- String output = itemObj.updateItem(fid, fname, fcountry, fyears, fcategory,frequirements);
+ String output = itemObj.updatefd(fid, fname, fcountry, fyears, fcategory,frequirements);
 return output;
 }
 
@@ -64,14 +64,14 @@ return output;
 @Path("/")
 @Consumes(MediaType.APPLICATION_XML)
 @Produces(MediaType.TEXT_PLAIN)
-public String deleteItem(String itemData)
+public String deletefd(String fdData)
 {
 //Convert the input string to an XML document
- Document doc = Jsoup.parse(itemData, "", Parser.xmlParser());
+ Document doc = Jsoup.parse(fdData, "", Parser.xmlParser());
 
 //Read the value from the element <itemID>
  String fid = doc.select("fid").text();
- String output = itemObj.deleteItem(fid);
+ String output = itemObj.deletefd(fid);
 return output;
 }
 
