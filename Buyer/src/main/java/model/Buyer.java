@@ -52,12 +52,13 @@ public class Buyer {
 		
 		 preparedStmt.execute();
 		 con.close();
-		 output = "Inserted successfully";
+		 String newItems = readBuyer();
+		 output = "{\"status\":\"success\", \"data\": \"" +newItems + "\"}";
 		 }
 		 catch (Exception e)
 		 {
-		 output = "Error while inserting the item.";
-		 System.err.println(e.getMessage());
+			 output = "{\"status\":\"error\", \"data\": \"Error while inserting the item.\"}";
+			 System.err.println(e.getMessage());
 		 }
 		 return output;
 		 }
@@ -74,7 +75,7 @@ public class Buyer {
 		 if (con == null)
 		 {return "Error while connecting to the database for reading."; }
 		 // Prepare the html table to be displayed
-		 output = "<table border='1'><tr><th>Buyer ID</th><th>First Name</th><th>Last Name</th>" +
+		 output = "<table border='1'><tr><th>First Name</th><th>Last Name</th>" +
 		 "<th>Phone No </th>" +
 		 "<th>Birth Date </th>" +
 		 "<th>E-mail</th><th>Country</th><th>Password</th><th>Confirm Password</th></tr>";
@@ -96,8 +97,11 @@ public class Buyer {
 		 String cpassword = rs.getString("cpassword");
 	
 		 // Add into the html table
-		 output += "<tr><td>" + bid + "</td>";
-		 output += "<td>" + fname + "</td>";
+		 output += "<tr><td><input id='hidbidUpdate' name='hidbidUpdate'type='hidden' value='" + bid
+					+ "'>" + fname + "</td>";
+		 
+		 //output += "<tr><td>" + bid + "</td>";
+		 //output += "<td>" + fname + "</td>";
 		 output += "<td>" + lname + "</td>";
 		 output += "<td>" + phone + "</td>";
 		 output += "<td>" + bdate + "</td>";
@@ -106,6 +110,10 @@ public class Buyer {
 		 output += "<td>" + password + "</td>";
 		 output += "<td>" + cpassword + "</td>";
 		 // buttons
+		 
+		 output += "<td><input name='btnUpdate' type='button' value='Update' "+ "class='btnUpdate btn btn-secondary' data-bidd='" + bid + "'></td>"
+
+	 + "<td><input name='btnRemove' type='button' value='Remove'class='btnRemove btn btn-danger' data-bidd='" + bid + "'>" +"</td>";
 		
 		 }
 		 con.close();
@@ -154,12 +162,13 @@ public class Buyer {
 		 // execute the statement
 		 preparedStmt.execute();
 		 con.close();
-		 output = "Updated successfully";
+		 String newItems = readBuyer();
+		 output = "{\"status\":\"success\", \"data\": \"" +newItems + "\"}"; 
 		 }
 		 catch (Exception e)
 		 {
-		 output = "Error while updating the item.";
-		 System.err.println(e.getMessage());
+			 output = "{\"status\":\"error\", \"data\":\"Error while updating the item.\"}";
+			 	System.err.println(e.getMessage());
 		 }
 		 return output;
 		 } 
@@ -181,12 +190,13 @@ public class Buyer {
 		 // execute the statement
 		 preparedStmt.execute();
 		 con.close();
-		 output = "Deleted successfully";
+		 String newItems = readBuyer();
+		 output = "{\"status\":\"success\", \"data\": \"" +newItems + "\"}";
 		 }
 		 catch (Exception e)
 		 {
-		 output = "Error while deleting the item.";
-		 System.err.println(e.getMessage());
+			 output = "{\"status\":\"error\", \"data\":\"Error while deleting the item.\"}";
+			 System.err.println(e.getMessage());
 		 }
 		 return output;
 		 }
