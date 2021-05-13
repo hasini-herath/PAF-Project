@@ -51,18 +51,20 @@ public class Researcher {
 	
 	 preparedStmt.execute();
 	 con.close();
-	 output = "Inserted successfully";
+	 String newItems = readResercher();
+	 output = "{\"status\":\"success\", \"data\": \"" +newItems + "\"}";
 	 }
 	 catch (Exception e)
 	 {
-	 output = "Error while inserting the item.";
-	 System.err.println(e.getMessage());
+
+		 output = "{\"status\":\"error\", \"data\": \"Error while inserting the item.\"}";
+		 System.err.println(e.getMessage());
 	 }
 	 return output;
 	 } 
 	
 	
-	public String readreseacher()
+	public String readResercher()
 	 {
 	 String output = "";
 	 try
@@ -71,7 +73,7 @@ public class Researcher {
 	 if (con == null)
 	 {return "Error while connecting to the database for reading."; }
 
-	 output = "<table border='1'><tr><th>Researcher ID</th><th>First Name</th>" +"<th>Last Name</th>" +"<th>Contact Nunmber</th>" +"<th>Date Of Birth</th><th>Email</th>"+"<th>Inovation Catogery</th>"+"<th>Country</th>"+"<th>Education Status</th>"+"<th>Password</th>"+"<th>Confirm Password</th></tr>";
+	 output = "<table border='1'><tr><th>First Name</th>" +"<th>Last Name</th>" +"<th>Contact Nunmber</th>" +"<th>Date Of Birth</th><th>Email</th>"+"<th>Inovation Catogery</th>"+"<th>Country</th>"+"<th>Education Status</th>"+"<th>Password</th>"+"<th>Confirm Password</th></tr>";
 
 	 String query = "select * from rdetails";
 	 Statement stmt = con.createStatement();
@@ -91,8 +93,12 @@ public class Researcher {
 	 String password = rs.getString("password");
 	 String cpasswored = rs.getString("cpasswored");
 	 // Add into the html table
-	 output += "<tr><td>" + rid + "</td>";
-	 output += "<td>" + fname + "</td>";
+	 
+	 
+	 output += "<tr><td><input id='hidridUpdate' name='hidridUpdate'type='hidden' value='" + rid
+				+ "'>" + fname + "</td>";
+	 //output += "<tr><td>" + rid + "</td>";
+	 //output += "<td>" + fname + "</td>";
 	 output += "<td>" + lname + "</td>";
 	 output += "<td>" + phone + "</td>";
 	 output += "<td>" + bdate + "</td>";
@@ -103,10 +109,10 @@ public class Researcher {
 	 output += "<td>" + password + "</td>";
 	 output += "<td>" + cpasswored + "</td>";
 	 // buttons
-	 output += "<td><input name='btnUpdate' type='button' value='Update'class='btn btn-secondary'></td>"
-	 + "<td><form method='post' action='items.jsp'>"+ "<input name='btnRemove' type='submit' value='Remove'class='btn btn-danger'>"
-	 + "<input name='rid' type='hidden' value='" + rid
-	 + "'>" + "</form></td></tr>";
+	 output += "<td><input name='btnUpdate' type='button' value='Update' "+ "class='btnUpdate btn btn-secondary' data-ridd='" + rid + "'></td>"
+
+	 + "<td><input name='btnRemove' type='button' value='Remove'class='btnRemove btn btn-danger' data-ridd='" + rid + "'>" +"</td>";
+	
 	 }
 	 con.close();
 	 // Complete the html table
@@ -121,7 +127,7 @@ public class Researcher {
 	 } 
 	
 	
-	public String updatereseacher(String ridd,String fname, String lname, String phone, String bdate, String email, String inoctgry, String country, String edustate, String password, String cpasswored)
+	public String updateResercher(String ridd,String fname, String lname, String phone, String bdate, String email, String inoctgry, String country, String edustate, String password, String cpasswored)
 	
 	 {
 	 String output = "";
@@ -148,12 +154,13 @@ public class Researcher {
 	 // execute the statement
 	 preparedStmt.execute();
 	 con.close();
-	 output = "Updated successfully";
+	 String newItems = readResercher();
+	 output = "{\"status\":\"success\", \"data\": \"" +newItems + "\"}"; 
 	 }
 	 catch (Exception e)
 	 {
-	 output = "Error while updating the item.";
-	 System.err.println(e.getMessage());
+		 output = "{\"status\":\"error\", \"data\":\"Error while updating the item.\"}";
+		 	System.err.println(e.getMessage());
 	 }
 	 return output;
 	 } 
@@ -167,7 +174,7 @@ public class Researcher {
 	
 	
 	
-	public String deletereseacher(String rid)
+	public String deleteResercher(String rid)
 	 {
 	 String output = "";
 	 try
@@ -183,12 +190,13 @@ public class Researcher {
 	 // execute the statement
 	 preparedStmt.execute();
 	 con.close();
-	 output = "Deleted successfully";
+	 String newItems = readResercher();
+	 output = "{\"status\":\"success\", \"data\": \"" +newItems + "\"}";
 	 }
 	 catch (Exception e)
 	 {
-	 output = "Error while deleting the item.";
-	 System.err.println(e.getMessage());
+		 output = "{\"status\":\"error\", \"data\":\"Error while deleting the item.\"}";
+		 System.err.println(e.getMessage());
 	 }
 	 return output;
 	 }
