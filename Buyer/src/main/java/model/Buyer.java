@@ -54,6 +54,7 @@ public class Buyer {
 		 con.close();
 		 String newItems = readBuyer();
 		 output = "{\"status\":\"success\", \"data\": \"" +newItems + "\"}";
+
 		 }
 		 catch (Exception e)
 		 {
@@ -111,7 +112,7 @@ public class Buyer {
 		 output += "<td>" + cpassword + "</td>";
 		 // buttons
 		 
-		 output += "<td><input name='btnUpdate' type='button' value='Update' "+ "class='btnUpdate btn btn-secondary' data-bidd='" + bid + "'></td>"
+		 output += "<td><input name='btnUpdate' type='button' value='Update' "+"class='btnUpdate btn btn-secondary' data-bidd='" + bid + "'></td>"
 
 	 + "<td><input name='btnRemove' type='button' value='Remove'class='btnRemove btn btn-danger' data-bidd='" + bid + "'>" +"</td>";
 		

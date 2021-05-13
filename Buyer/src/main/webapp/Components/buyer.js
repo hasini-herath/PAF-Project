@@ -142,6 +142,11 @@ if (status == "success")
 
 function validateItemForm()
 {
+
+  
+    
+ 
+ 
 // CODE
 if ($("#fname").val().trim() == "")
  {
