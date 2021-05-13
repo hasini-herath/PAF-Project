@@ -51,12 +51,13 @@ public class Fundingbody {
 	
 	 preparedStmt.execute();
 	 con.close();
-	 output = "Inserted successfully";
+	 String newItems = readfd();
+	 output = "{\"status\":\"success\", \"data\": \"" +newItems + "\"}";
 	 }
 	 catch (Exception e)
 	 {
-	 output = "Error while inserting the item.";
-	 System.err.println(e.getMessage());
+		 output = "{\"status\":\"error\", \"data\": \"Error while inserting the item.\"}";
+		 System.err.println(e.getMessage());
 	 }
 	 return output;
 	 } 
@@ -72,7 +73,7 @@ public class Fundingbody {
 	 if (con == null)
 	 {return "Error while connecting to the database for reading."; }
 
-	 output = "<table border='1'><tr><th>fidID</th><th>fname</th>" +"<th>fcountry</th>" +"<th>fyears</th>" +"<th>fcategory</th><th>frequirements</th></tr>";
+	 output = "<table border='1'><tr><th>fname</th>" +"<th>fcountry</th>" +"<th>fyears</th>" +"<th>fcategory</th><th>frequirements</th></tr>";
 
 	 String query = "select * from fundingbd";
 	 Statement stmt = con.createStatement();
@@ -88,19 +89,26 @@ public class Fundingbody {
 	 String frequirements = rs.getString("frequirements");
 	
 	 // Add into the html table
-	 output += "<tr><td>" + fid + "</td>";
-	 output += "<td>" + fname + "</td>";
+	 
+	 output += "<tr><td><input id='hidfidUpdate' name='hidfidUpdate'type='hidden' value='" + fid
+				+ "'>" + fname + "</td>";
+	// output += "<tr><td>" + fid + "</td>";
+	 //output += "<td>" + fname + "</td>";
 	 output += "<td>" + fcountry + "</td>";
 	 output += "<td>" + fyears + "</td>";
 	 output += "<td>" + fcategory + "</td>";
 	 output += "<td>" + frequirements + "</td>";
 
 	 // buttons
-	
+	 output += "<td><input name='btnUpdate' type='button' value='Update' "+ "class='btnUpdate btn btn-secondary' data-fidd='" + fid + "'></td>"
+
+	 + "<td><input name='btnRemove' type='button' value='Remove'class='btnRemove btn btn-danger' data-fidd='" + fid + "'>" +"</td>";
+		
 	 }
 	 con.close();
 	 // Complete the html table
 	 output += "</table>";
+	 
 	 }
 	 catch (Exception e)
 	 {
@@ -136,12 +144,13 @@ public class Fundingbody {
 	 // execute the statement
 	 preparedStmt.execute();
 	 con.close();
-	 output = "Updated successfully";
+	 String newItems = readfd();
+	 output = "{\"status\":\"success\", \"data\": \"" +newItems + "\"}"; 
 	 }
 	 catch (Exception e)
 	 {
-	 output = "Error while updating the item.";
-	 System.err.println(e.getMessage());
+		 output = "{\"status\":\"error\", \"data\":\"Error while updating the item.\"}";
+		 	System.err.println(e.getMessage());
 	 }
 	 return output;
 	 } 
@@ -167,12 +176,13 @@ public class Fundingbody {
 	 // execute the statement
 	 preparedStmt.execute();
 	 con.close();
-	 output = "Deleted successfully";
+	 String newItems = readfd();
+	 output = "{\"status\":\"success\", \"data\": \"" +newItems + "\"}";
 	 }
 	 catch (Exception e)
 	 {
-	 output = "Error while deleting the item.";
-	 System.err.println(e.getMessage());
+		 output = "{\"status\":\"error\", \"data\":\"Error while deleting the item.\"}";
+		 System.err.println(e.getMessage());
 	 }
 	 return output;
 	 }
