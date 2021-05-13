@@ -57,6 +57,8 @@ function onItemSaveComplete(response, status)
 					 $("#alertSuccess").text("Successfully saved.");
 					 $("#alertSuccess").show();
 					 $("#divItemsGrid").html(resultSet.data);
+				 // Redirect the valid user-----------------
+ 					 document.location = "buyerlogging.jsp";
  
 				} 
 				else if (resultSet.status.trim() == "error")

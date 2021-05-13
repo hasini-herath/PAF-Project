@@ -1,4 +1,4 @@
-<%@page import="model.Buyer"%>
+<%@page import="model.Buyerregister"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -8,11 +8,11 @@
 <title>Buyer Management</title>
 <link rel="stylesheet" href="Views/bootstrap.min.css">
 <script src="Components/jquery-3.2.1.min.js"></script>
-<script src="Components/buyer.js"></script>
+<script src="Components/buyerregister.js"></script>
 </head>
 <body>
 		<div class="container"><div class="row"><div class="col-6">
-		<h1>Welcome GadgetBadget Online Sale </h1>
+		<h1>Buyer Register Page </h1>
 		<form id="formBuyer" name="formBuyer">
 		
  		First Name:
@@ -48,7 +48,7 @@
 		
 		 <%
 		   
-		    Buyer itemObj = new Buyer();
+		 Buyerregister itemObj = new Buyerregister();
  			
  			out.print(itemObj.readBuyer());
  		%>
